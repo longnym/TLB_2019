@@ -12,6 +12,8 @@ kafka-topics --create --topic twitter --zookeeper localhost:2181 --partitions 1 
 
 kafka-console-producer --topic teste --broker-list localhost:9092
 
+flume-ng agent -n longhong -f ~/conf/twitter_kafka.conf
+
 curl -X "POST" "http://localhost:8088/query" -H "Content-Type: application/vnd.ksql.v1+json; charset=utf-8" -d $'{"ksql": "PRINT 'twitter' FROM BEGINNING;","streamsProperties": {}}'
 
 <br>
